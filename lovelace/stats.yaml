@@ -1,0 +1,102 @@
+- type: entities
+  title: People
+  show_header_toggle: false
+  entities:
+    - entity: person.agnieszka
+    - entity: person.michal
+    - entity: device_tracker.lya_l29
+    - entity: device_tracker.sm_a405fn
+
+- type: entities
+  title: Other devices
+  show_header_toggle: false
+  entities:
+    - entity: sensor.linak_desk_height
+    # - entity: sensor.dcp_1610w_status
+    # - entity: sensor.dcp_1610w_black_toner_remaining
+    - entity: sensor.speedtest_download
+    - entity: sensor.speedtest_upload
+    - entity: sensor.speedtest_ping
+  
+- type: entities
+  title: Tinker Board
+  show_header_toggle: false
+  entities:
+    - entity: sensor.disk_use_percent
+    - entity: sensor.last_boot
+    - entity: sensor.memory_use_percent
+    - entity: sensor.network_in_wlan0
+    - entity: sensor.network_out_wlan0
+    - entity: sensor.swap_use_percent
+    - entity: sensor.load_5m
+    - entity: sensor.tinker_board_cpu_temp
+      name: CPU Temp
+
+- type: entities
+  title: Tinker Board
+  show_header_toggle: false
+  entities:
+    - entity: sensor.disk_use_percent
+    - entity: sensor.last_boot
+    - entity: sensor.memory_use_percent
+    - entity: sensor.network_in_wlan0
+    - entity: sensor.network_out_wlan0
+    - entity: sensor.swap_use_percent
+    - entity: sensor.load_5m
+    - entity: sensor.tinker_board_cpu_temp
+      name: CPU Temp
+
+- type: entities
+  title: Sensors
+  show_header_toggle: false
+  entities:
+    - entity: sensor.ble_temperature_xiaomi1
+    - entity: sensor.ble_humidity_xiaomi1
+    - entity: sensor.ble_battery_xiaomi1
+    - entity: sensor.ble_temperature_xiaomi2
+    - entity: sensor.ble_humidity_xiaomi2
+    - entity: sensor.ble_battery_xiaomi2
+
+# - type: custom:linak-desk
+#   entity: cover.desk
+#   height:
+#     min: 64
+#     max: 128
+#   presets:
+#     - target: 112
+#       label: 'Up'
+#     - target: 71
+#       label: 'Down'
+# - entities:
+#     - entity: sensor.glances_package_id_0_temp
+#       name: Temp Package ID 0
+#     - entity: sensor.glances_pch_cannonlake_1_temp
+#       name: Temp PCH Cannonlake 1
+#     - entity: sensor.glances_battery_temp
+#       name: Temp Battery
+#     - entity: sensor.glances_acpitz_1_temp
+#       name: Temp Acpitz
+#     - entity: sensor.glances_cpu_load
+#       name: CPU Load
+#     - entity: sensor.glances_ram_free
+#       name: RAM free
+#     - entity: sensor.glances_cpu_used
+#       name: CPU used
+#     - entity: sensor.glances_ram_used
+#       name: RAM used
+#     - entity: sensor.glances_swap_used
+#       name: SWAP used
+#     - entity: sensor.glances_running
+#     - entity: sensor.glances_thread
+#     - entity: sensor.glances_containers_ram_used
+#     - entity: sensor.glances_containers_cpu_used
+#     - entity: sensor.glances_containers_active
+#   show_header_toggle: false
+#   title: Dell XPS
+#   type: entities
+# - entities:
+#     - automation.turn_off_purifier_if_air_good
+#     - automation.turn_on_purifier_if_air_is_bad
+#   show_header_toggle: false
+#   title: Automatyzacje
+#   type: entities

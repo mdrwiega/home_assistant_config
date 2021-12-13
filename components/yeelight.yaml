@@ -1,0 +1,9 @@
+devices:
+  !secret yeelight_lamp_living_room_ip :
+    name: Living Room Ceiling Lamp
+    model: ceiling3
+    nightlight_switch_type: light
+  !secret yeelight_lamp_bedroom_ip :
+    name: Bedroom Ceiling Lamp
+    model: ceiling1
+    nightlight_switch_type: light

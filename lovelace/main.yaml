@@ -1,0 +1,130 @@
+- type: horizontal-stack
+  cards:
+    - entity: light.living_room_ceiling_lamp
+      name: Living room lamp
+      type: light
+    - entity: light.living_room_ceiling_lamp_nightlight
+      name: Living room lamp
+      type: light
+    - entity: light.bedroom_ceiling_lamp
+      name: Bedroom lamp
+      type: light
+    - entity: light.bedroom_ceiling_lamp_nightlight
+      name: Bedroom lamp
+      type: light
+
+- type: entities
+  entities:
+    - buttons:
+        locate: false
+        start: true
+        stop: false
+      entity: vacuum.xiaomi_vacuum_cleaner
+      image: /local/img/vacuum.png
+      name: false
+      type: 'custom:xiaomi-vacuum-card'
+      vendor: xiaomi
+    - entity: input_select.vacuum_room
+      name: Zone cleanup
+
+- entity: media_player.samsung_tv_remote
+  type: media-control
+
+- title: Outside
+  type: glance  
+  entities:
+    - entity: sensor.airly_aqi
+      name: AQI
+    - entity: sensor.airly_pm25
+    - entity: sensor.airly_temperature
+      name: Temperature
+    - entity: sensor.airly_humidity
+      name: Humidity
+    - entity: sensor.airly_pressure
+      name: Pressure
+
+- type: vertical-stack
+  cards:
+    - entities:
+        - entity: sensor.mi_purifier_aqi
+          name: AQI
+        - entity: sensor.mi_purifier_t
+          name: Temperature
+        - entity: sensor.mi_purifier_h
+          name: Humidity
+        - entity: sensor.mi_humidifier_w
+          name: Water level
+      title: Living room
+      type: glance
+    - cards:
+        - entity: fan.air_purifier
+          name: Air purifier
+          state_color: true
+          type: button
+        - entity: fan.humidifier
+          name: Humidifier
+          state_color: true
+          type: button
+      type: horizontal-stack
+
+- entity: weather.dom
+  theme: default
+  type: weather-forecast
+
+- entity: climate.air_conditioner_c_h
+  name: Air conditioner
+  type: thermostat
+
+- type: vertical-stack
+  cards:
+    - entities:
+        - entity: sensor.mi_purifier_aqi
+          name: Inside
+        - entity: sensor.airly_aqi
+          name: Outside
+      hours_to_show: 72
+      title: Air quality
+      type: history-graph
+
+- type: vertical-stack
+  cards:
+    - entities:
+        - entity: sensor.mi_purifier_t
+          name: Inside
+        - entity: sensor.airly_temperature
+          name: Outside
+        - entity: sensor.ble_temperature_xiaomi1
+          name: MiBt1
+        - entity: sensor.ble_temperature_xiaomi2
+          name: MiBt2
+      hours_to_show: 72
+      refresh_interval: 0
+      title: Temperature
+      type: history-graph
+
+- type: vertical-stack
+  cards:
+    - entities:
+        - entity: sensor.mi_purifier_h
+          name: Inside
+        - entity: sensor.airly_humidity
+          name: Outside
+        - entity: sensor.ble_humidity_xiaomi1
+          name: MiBt1
+        - entity: sensor.ble_humidity_xiaomi2
+          name: MiBt2
+      hours_to_show: 72
+      title: Humidity
+      type: history-graph
+
+- type: entities
+  entities:
+    - entity: sensor.poland_coronavirus_confirmed
+    - entity: sensor.poland_coronavirus_deaths
+    - entity: sensor.worldwide_coronavirus_confirmed
+    - entity: sensor.worldwide_coronavirus_deaths
+  
+- type: vertical-stack
+  cards:
+  - type: custom:air-purifier-card
+    entity: fan.air_purifier

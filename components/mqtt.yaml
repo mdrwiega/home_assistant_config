@@ -1,0 +1,4 @@
+broker: 127.0.0.1
+birth_message:
+  topic: 'homeassistant/status'
+  payload: 'online'

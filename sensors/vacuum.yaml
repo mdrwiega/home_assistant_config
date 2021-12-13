@@ -1,0 +1,5 @@
+- platform: template
+  sensors:
+    xiaomi_vacuum_cleaner_status:
+      friendly_name: "Vacuum Status"
+      value_template: "{{ states.vacuum.xiaomi_vacuum_cleaner }}"

@@ -1,0 +1,6 @@
+- platform: samsungtv_tizen
+  host: !secret samsung_tv_ip
+  port: 8002
+  mac: !secret samsung_tv_mac
+  # source_list: '{"TV":"KEY_SOURCE+KEY_DOWN+KEY_UP+KEY_LEFT+KEY_LEFT+KEY_ENTER","Manual":"KEY_SOURCE+KEY_DOWN+KEY_UP+KEY_LEFT+KEY_LEFT+KEY_RIGHT+KEY_ENTER","Chromecast":"KEY_SOURCE+KEY_DOWN+KEY_UP+KEY_LEFT+KEY_LEFT+KEY_RIGHT+KEY_RIGHT+KEY_ENTER"}'
+  # app_list: '{"Netflix": "11101200001", "YouTube": "111299001912", "Spotify": "3201606009684"}'

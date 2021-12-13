@@ -1,0 +1,4 @@
+- platform: mqtt
+  name: "Desk height"
+  state_topic: "linak_desk/height/cm"
+  unit_of_measurement: "cm"

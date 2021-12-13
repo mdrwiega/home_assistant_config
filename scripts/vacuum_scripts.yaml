@@ -1,0 +1,74 @@
+vacuum_kitchen:
+  alias: Vacuum kitchen
+  sequence:
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      command: app_zoned_clean
+      params:
+      - - 23538
+        - 22311
+        - 25288
+        - 24911
+        - 1
+vacuum_bathroom:
+  alias: Vacuum bathroom
+  sequence:
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      command: app_zoned_clean
+      params:
+      - - 29778
+        - 25116
+        - 31778
+        - 27066
+        - 1
+vacuum_living_room:
+  alias: Vacuum living room
+  sequence:
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      command: app_zoned_clean
+      params:
+      - - 23194
+        - 25095
+        - 28194
+        - 30495
+        - 1
+      - - 28134
+        - 25222
+        - 29884
+        - 26972
+        - 2
+vacuum_bedroom:
+  alias: Vacuum bedroom
+  sequence:
+  - service: vacuum.send_command
+    data:
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      command: app_zoned_clean
+      params:
+      - - 28652
+        - 27119
+        - 31902
+        - 30519
+        - 1
+vacuum_all:
+  alias: Vacuum all
+  sequence:
+  - service: vacuum.start
+    data:
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+vacuum_dispatch:
+  alias: Vacuum Dispatch
+  sequence:
+  - service: script.turn_on
+    data_template:
+      entity_id: "{% if room|lower in (\"living room\", \"the living room\") %}\n\
+        \  script.vacuum_living_room\n{% elif room|lower in (\"bedroom\", \"the bedroom\"\
+        ) %}\n  script.vacuum_bedroom\n{% elif room|lower in (\"bathroom\", \"the\
+        \ bathroom\") %}\n  script.vacuum_bathroom\n{% elif room|lower in (\"kitchen\"\
+        , \"the kitchen\") %}\n  script.vacuum_kitchen\n{% elif room|lower in (\"\
+        all\") %}\n  script.vacuum_all\n{% endif %}"

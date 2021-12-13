@@ -1,0 +1,12 @@
+home-assistant*
+.HA_VERSION
+deps
+tts
+.storage
+.cloud
+*.save
+*.pyc
+*.log
+*.db
+*.db-*
+secrets.yaml

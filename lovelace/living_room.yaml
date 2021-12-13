@@ -1,0 +1,98 @@
+- cards:
+    - entity: light.living_room_ceiling_lamp
+      name: Salon lampa
+      type: light
+    - entity: light.living_room_ceiling_lamp_nightlight
+      name: Salon lampa
+      type: light
+  type: horizontal-stack
+- entities:
+    - buttons:
+        locate: false
+        start: true
+        stop: false
+      entity: vacuum.xiaomi_vacuum_cleaner
+      image: /local/img/vacuum.png
+      name: false
+      type: 'custom:xiaomi-vacuum-card'
+      vendor: xiaomi
+    - entity: input_select.vacuum_room
+      name: Zone cleanup
+  type: entities
+- entity: media_player.samsung_tv_remote
+  type: media-control
+- entities:
+    - entity: sensor.airly_aqi
+      name: AQI
+    - entity: sensor.airly_pm25
+    - entity: sensor.airly_temperature
+      name: Temperatura
+    - entity: sensor.airly_humidity
+      name: Wilgotność
+    - entity: sensor.airly_pressure
+      name: Ciśnienie
+  title: Na zewnątrz (Airly)
+  type: glance
+- cards:
+    - entities:
+        - entity: sensor.mi_purifier_aqi
+          name: AQI
+        - entity: sensor.mi_purifier_t
+          name: Temperatura
+        - entity: sensor.mi_purifier_h
+          name: Wilgotność
+        - entity: sensor.mi_humidifier_w
+          name: Poziom wody
+      title: Salon
+      type: glance
+    - cards:
+        - entity: fan.humidifier
+          name: Nawilżacz
+          state_color: true
+          type: button
+      type: horizontal-stack
+  type: vertical-stack
+- entity: climate.air_conditioner_c_h
+  name: Klimatyzator
+  type: thermostat
+- cards:
+    - entities:
+        - entity: sensor.mi_purifier_t
+          name: Salon
+        - entity: sensor.airly_temperature
+          name: Na zewnątrz (Airly)
+      hours_to_show: 48
+      refresh_interval: 0
+      title: Temperatura 48h
+      type: history-graph
+    - entities:
+        - entity: sensor.mi_purifier_h
+          name: Salon
+        - entity: sensor.airly_humidity
+          name: Na zewnątrz (Airly)
+      hours_to_show: 48
+      title: Wilgotność 48h
+      type: history-graph
+    - entities:
+        - entity: sensor.mi_purifier_aqi
+          name: Salon
+        - entity: sensor.airly_aqi
+          name: Na zewnątrz (Airly)
+      hours_to_show: 48
+      title: Jakość powietrza 48h
+      type: history-graph
+  type: vertical-stack
+- cards:
+  - type: custom:linak-desk
+    entity: cover.desk
+    height:
+      min: 68
+      max: 128
+    presets:
+      - target: 100
+        label: 'Up'
+      - target: 78
+        label: 'Down'
+  - type: custom:air-purifier-card
+    entity: fan.air_purifier
+  type: vertical-stack
