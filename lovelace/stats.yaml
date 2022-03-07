@@ -33,20 +33,6 @@
       name: CPU Temp
 
 - type: entities
-  title: Tinker Board
-  show_header_toggle: false
-  entities:
-    - entity: sensor.disk_use_percent
-    - entity: sensor.last_boot
-    - entity: sensor.memory_use_percent
-    - entity: sensor.network_in_wlan0
-    - entity: sensor.network_out_wlan0
-    - entity: sensor.swap_use_percent
-    - entity: sensor.load_5m
-    - entity: sensor.tinker_board_cpu_temp
-      name: CPU Temp
-
-- type: entities
   title: Sensors
   show_header_toggle: false
   entities:
