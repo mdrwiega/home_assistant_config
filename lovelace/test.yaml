@@ -1,0 +1,135 @@
+- type: entities
+  show_header_toggle: false
+  entities:
+    - entity: switch.zhimi_airpurifier_mc1_buzzer
+      name: Buzzer
+    - entity: switch.zhimi_airpurifier_mc1_child_lock
+      name: Child lock
+    - entity: number.zhimi_airpurifier_mc1_favorite_level
+      name: Favorite level
+    - entity: switch.zhimi_airpurifier_mc1_led
+      name: LED
+    - entity: sensor.zhimi_airpurifier_mc1_filter_life_remaining
+      name: Filter life remaining
+    - entity: sensor.zhimi_airpurifier_mc1_filter_use
+      name: Filter use
+    - entity: sensor.zhimi_airpurifier_mc1_motor_speed
+      name: Motor speed
+  title: Air Purifier 2S
+
+- type: entities
+  show_header_toggle: false
+  entities:
+    - entity: switch.zhimi_airp_mb5_buzzer
+      name: Buzzer
+    - entity: switch.zhimi_airp_mb5_child_lock
+      name: Child lock
+    - entity: number.zhimi_airp_mb5_fan_level
+      name: Fan level
+    - entity: number.zhimi_airp_mb5_favorite_level
+      name: Favorite level
+    - entity: switch.zhimi_airp_mb5_ionizer
+      name: Ionizer
+    - entity: sensor.zhimi_airp_mb5_filter_life_remaining
+      name: Filter life remaining
+    - entity: sensor.zhimi_airp_mb5_filter_time_left
+      name: Filter time left
+    - entity: sensor.zhimi_airp_mb5_filter_use
+      name: Filter use
+    - entity: sensor.zhimi_airp_mb5_motor_speed
+      name: Motor speed
+  title: Air Purifier 4
+
+- type: vertical-stack
+  cards:
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - entity: switch.zhimi_humidifier_cb1_buzzer
+        name: Buzzer
+      - entity: switch.zhimi_humidifier_cb1_child_lock
+        name: Child lock
+      - entity: switch.zhimi_humidifier_cb1_dry_mode
+        name: Dry mode
+      - entity: select.zhimi_humidifier_cb1_led_brightness
+        name: Led Brightness
+      - entity: sensor.zhimi_humidifier_cb1_motor_speed
+        name: Motor speed
+      - entity: sensor.zhimi_humidifier_cb1_water_level
+        name: Water level
+      - entity: binary_sensor.zhimi_humidifier_cb1_water_tank
+        name: Water tank
+    title: Humidifier
+
+  - type: humidifier
+    entity: humidifier.zhimi_humidifier_cb1
+    name: Humidifier
+
+- type: entities
+  show_header_toggle: false
+  entities:
+    - entity: number.salon_bass
+      name: Bass
+    - entity: switch.salon_crossfade
+      name: Crossfade
+    - entity: switch.sonos_alarm_1
+      name: Daily alarm 09:30
+    - entity: switch.salon_loudness
+      name: Loudness
+    - entity: number.salon_treble
+      name: Treble
+  title: Sonos
+
+- type: entities
+  title: Battery states
+  entities:
+  - type: custom:battery-entity
+    entity: sensor.temperature_humidity_sensor_5522_battery
+    name: Xiaomi sensor - desk M
+  - type: custom:battery-entity
+    entity: sensor.temperature_humidity_sensor_111a_battery
+    name: Xiaomi sensor - desk A
+  - type: custom:battery-entity
+    entity: sensor.temperature_humidity_sensor_de16_battery
+    name: Xiaomi sensor - bedroom
+  - type: custom:battery-entity
+    entity: sensor.temperature_humidity_sensor_5bb2_battery
+    name: Xiaomi sensor - living room
+
+# - entity: climate.air_conditioner_c_h
+#   name: Air conditioner
+#   type: thermostat
+
+# - type: entities
+#   entities:
+#     - type: custom:air-purifier-card
+#       entity: fan.zhimi_airpurifier_mc1
+#   title: zhimi.airpurifier.2s
+
+# - type: vertical-stack
+#   cards:
+#     - entities:
+#         - entity: sensor.zhimi_airpurifier_mc1_pm2_5
+#           name: Inside
+#         - entity: sensor.airly_pm25
+#           name: Outside
+#       hours_to_show: 72
+#       title: Air quality
+#       type: history-graph
+#     - entities:
+#         - entity: sensor.zhimi_airpurifier_mc1_temperature
+#           name: Inside
+#         - entity: sensor.airly_temperature
+#           name: Outside
+#       hours_to_show: 72
+#       refresh_interval: 0
+#       title: Temperature
+#       type: history-graph
+#     - entities:
+#         - entity: sensor.zhimi_airpurifier_mc1_humidity
+#           name: Inside
+#         - entity: sensor.airly_humidity
+#           name: Outside
+#       hours_to_show: 72
+#       title: Humidity
+#       type: history-graph

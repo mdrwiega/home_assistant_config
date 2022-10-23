@@ -1,14 +1,10 @@
 # db_url: /backup
 auto_purge: True
 purge_keep_days: 2
-# include:
-#   domains:
-#     - sensor
-#     - switch
-#     - light
-#     - binary_sensor
-  # entities:
-  #   - image_processing.living_room_person_detection
+include:
+  domains:
+    - sensor
+    - light
 exclude:
   domains:
     # - automation
