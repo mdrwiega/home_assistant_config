@@ -4,20 +4,24 @@
       arg: '/'
     - type: memory_use_percent
     - type: processor_use
+    - type: processor_temperature
     - type: load_5m
+    - type: load_15m
     - type: network_in
-      arg: wlan0
+      arg: wlo1
     - type: network_out
-      arg: wlan0
+      arg: wlo1
     - type: last_boot
     - type: swap_use_percent
+    - type: ipv4_address
+      arg: wlo1
 
-- platform: command_line
-  name: "Tinker Board CPU Temp"
-  command: "cat /sys/class/thermal/thermal_zone0/temp"
-  unit_of_measurement: "°C"
-  value_template: "{{ (value | multiply(0.001)) | round(1) }}"
-  scan_interval: 10
+# - platform: command_line
+#   name: "Server CPU Temp"
+#   command: "cat /sys/class/thermal/thermal_zone0/temp"
+#   unit_of_measurement: "°C"
+#   value_template: "{{ (value | multiply(0.001)) | round(1) }}"
+#   scan_interval: 10
 
 - platform: time_date
   display_options:
@@ -29,8 +33,8 @@
     - 'time_utc'
     - 'beat'
 
-- platform: linak_desk
-  mac: !secret linak_desk_mac
-  min_height_m: 0.635
-  max_height_m: 1.28
-  scan_interval: 30
+# - platform: linak_desk
+#   mac: !secret linak_desk_mac
+#   min_height_m: 0.635
+#   max_height_m: 1.28
+#   scan_interval: 30

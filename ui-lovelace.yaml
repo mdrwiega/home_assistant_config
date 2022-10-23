@@ -1,25 +1,21 @@
-custom_header:
-  compact_mode: true
-  editor_warnings: false
-  hide_help: true
-  voice_hide: true
 title: Home
 views:
-  - title: Home
+  - title: Overview
     cards: !include lovelace/main.yaml
     path: home
-    theme: Google Dark Theme
-    icon: mdi:view-dashboard
+    icon: mdi:home
 
   - title: Stats
     cards: !include lovelace/stats.yaml
     path: stats
-    theme: Google Dark Theme
     icon: mdi:server-security
 
-  # - title: Living Room
-  #   cards: !include lovelace/living_room.yaml
-  #   path: living room
-  #   theme: Google Dark Theme
-  #   icon: mdi:server-security
+  - title: Configuration
+    cards: !include lovelace/test.yaml
+    path: test
+    icon: mdi:cog
 
+  - title: Temperature
+    cards: !include lovelace/temperature.yaml
+    path: temperature
+    icon: mdi:home-thermometer

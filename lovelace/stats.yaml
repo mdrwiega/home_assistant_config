@@ -4,44 +4,90 @@
   entities:
     - entity: person.agnieszka
     - entity: person.michal
-    - entity: device_tracker.lya_l29
-    - entity: device_tracker.sm_a405fn
+
+# - type: entities
+#   title: Other devices
+#   show_header_toggle: false
+#   entities:
+#     - entity: sensor.linak_desk_height
+
+- type: vertical-stack
+  cards:
+    - type: grid
+      title: Router
+      columns: 2
+      square: false
+      cards:
+        - graph: line
+          type: sensor
+          entity: sensor.archerc7v5_kib_s_received
+          name: Received
+        - graph: line
+          type: sensor
+          entity: sensor.archerc7v5_kib_s_sent
+          name: Sent
+        # - entity: sensor.archerc7v5_external_ip
+        #   name: External IP
+    - type: glance
+      title: Internet
+      entities:
+        - entity: sensor.speedtest_download
+          name: Download
+        - entity: sensor.speedtest_upload
+          name: Upload
+        - entity: sensor.speedtest_ping
+          name: Ping
+
+- type: vertical-stack
+  cards:
+  - type: entities
+    title: Server
+    show_header_toggle: false
+    entities:
+      - entity: sensor.last_boot
+      - entity: sensor.ipv4_address_wlo1
+        name: IPv4 address
+      - entity: sensor.memory_use_percent
+        name: Memory use
+      - entity: sensor.disk_use_percent
+        name: Disk use
+      - entity: sensor.swap_use_percent
+        name: Swap use
+      - entity: sensor.network_in_wlo1
+      - entity: sensor.network_out_wlo1
+      - entity: sensor.load_5m
+      - entity: sensor.load_15m
+      - entity: sensor.processor_use
+        name: CPU use
+      - entity: sensor.processor_temperature
+        name: CPU temperature
+  - type: statistics-graph
+    stat_types: [ mean ]
+    chart_type: line
+    days_to_show: 1
+    entities:
+      - entity: sensor.load_5m
+        name: 'Load 5m'
+      - entity: sensor.load_15m
+        name: 'Load 15m'
+      - entity: sensor.processor_use
+        name: 'CPU use'
+      - entity: sensor.memory_use_percent
+        name: 'Memory use'
+      - entity: sensor.processor_temperature
+        name: 'CPU temperature'
 
 - type: entities
-  title: Other devices
-  show_header_toggle: false
+  title: Printer
   entities:
-    - entity: sensor.linak_desk_height
-    # - entity: sensor.dcp_1610w_status
-    # - entity: sensor.dcp_1610w_black_toner_remaining
-    - entity: sensor.speedtest_download
-    - entity: sensor.speedtest_upload
-    - entity: sensor.speedtest_ping
-  
-- type: entities
-  title: Tinker Board
-  show_header_toggle: false
-  entities:
-    - entity: sensor.disk_use_percent
-    - entity: sensor.last_boot
-    - entity: sensor.memory_use_percent
-    - entity: sensor.network_in_wlan0
-    - entity: sensor.network_out_wlan0
-    - entity: sensor.swap_use_percent
-    - entity: sensor.load_5m
-    - entity: sensor.tinker_board_cpu_temp
-      name: CPU Temp
-
-- type: entities
-  title: Sensors
-  show_header_toggle: false
-  entities:
-    - entity: sensor.ble_temperature_xiaomi1
-    - entity: sensor.ble_humidity_xiaomi1
-    - entity: sensor.ble_battery_xiaomi1
-    - entity: sensor.ble_temperature_xiaomi2
-    - entity: sensor.ble_humidity_xiaomi2
-    - entity: sensor.ble_battery_xiaomi2
+    - entity: sensor.dcp_1610w_black_toner_remaining
+      name: Toner remaining
+    - entity: sensor.dcp_1610w_drum_remaining_life
+      name: Drum remaining life
+    - entity: sensor.dcp_1610w_page_counter
+      name: Page counter
+    - entity: sensor.dcp_1610w_status
+      name: Status
 
 # - type: custom:linak-desk
 #   entity: cover.desk

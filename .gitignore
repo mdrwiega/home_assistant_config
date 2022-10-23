@@ -1,12 +1,23 @@
-home-assistant*
-.HA_VERSION
-deps
-tts
+# Whitelist
+!*.yaml
+!.gitignore
+!*.md
+!*.sh
+!*.js*
+
+# Ignore
+secrets.yaml
 .storage
 .cloud
-*.save
-*.pyc
-*.log
+backups
+deps
+tts
+blueprints
+
+# Ignore logs and database
+home-assistant.log*
 *.db
 *.db-*
-secrets.yaml
+
+*.save
+*.pyc

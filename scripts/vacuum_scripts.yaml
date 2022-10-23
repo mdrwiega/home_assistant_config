@@ -3,7 +3,7 @@ vacuum_kitchen:
   sequence:
   - service: vacuum.send_command
     data:
-      entity_id: vacuum.xiaomi_vacuum_cleaner
+      entity_id: vacuum.roborock_vacuum_s5
       command: app_zoned_clean
       params:
       - - 23538
@@ -16,7 +16,7 @@ vacuum_bathroom:
   sequence:
   - service: vacuum.send_command
     data:
-      entity_id: vacuum.xiaomi_vacuum_cleaner
+      entity_id: vacuum.roborock_vacuum_s5
       command: app_zoned_clean
       params:
       - - 29778
@@ -29,7 +29,7 @@ vacuum_living_room:
   sequence:
   - service: vacuum.send_command
     data:
-      entity_id: vacuum.xiaomi_vacuum_cleaner
+      entity_id: vacuum.roborock_vacuum_s5
       command: app_zoned_clean
       params:
       - - 23194
@@ -47,7 +47,7 @@ vacuum_bedroom:
   sequence:
   - service: vacuum.send_command
     data:
-      entity_id: vacuum.xiaomi_vacuum_cleaner
+      entity_id: vacuum.roborock_vacuum_s5
       command: app_zoned_clean
       params:
       - - 28652
@@ -60,7 +60,7 @@ vacuum_all:
   sequence:
   - service: vacuum.start
     data:
-      entity_id: vacuum.xiaomi_vacuum_cleaner
+      entity_id: vacuum.roborock_vacuum_s5
 vacuum_dispatch:
   alias: Vacuum Dispatch
   sequence:

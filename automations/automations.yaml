@@ -26,28 +26,3 @@
       data:
         title: "Uzupełnij wodę w nawilżaczu"
         message: "Nawilżacz został wyłączony ponieważ w zbiorniku pozostało {{ states('sensor.mi_humidifier_w') }}% wody."
-
-    # - choose:
-        # conditions:
-        #   condition: state
-        #   entity_id: person.michal
-        #   state: "home"
-        # sequence:
-        #   service: notify.notifier_mail_all
-        #   data:
-        #     title: "Uzupełnij wodę w nawilżaczu"
-        #     message: "Nawilżacz został wyłączony ponieważ w zbiorniku pozostało {{ states('sensor.humidifier_water_level') }}% wody."
-    # - choose:
-    #     conditions:
-    #       condition: state
-    #       entity_id: person.edyta
-    #       state: "home"
-    #     sequence:
-    #       service: python_script.notify
-    #       data:
-    #         title: "Uzupełnij wodę w nawilżaczu"
-    #         message: "Nawilżacz został wyłączony ponieważ w zbiorniku pozostało {{ states('sensor.humidifier_water_level') }}% wody."
-    #         tag: "notification-humidifier"
-    #         services:
-    #           - service: !secret edyta_notify_service
-    #             type: "ios"

@@ -12,17 +12,17 @@
     airly_pm1:
       friendly_name: "PM1"
       icon_template: mdi:jquery
-      unit_of_measurement: "μg/m3"
+      unit_of_measurement: "μg/m³"
       value_template: "{{ states.sensor.airly.state.split(' ')[0] }}"
     airly_pm25:
       friendly_name: "PM2.5"
       icon_template: mdi:jquery
-      unit_of_measurement: "μg/m3"
+      unit_of_measurement: "µg/m³"
       value_template: "{{ states.sensor.airly.state.split(' ')[1] }}"
     airly_pm10:
       friendly_name: "PM10"
       icon_template: mdi:jquery
-      unit_of_measurement: "μg/m3"
+      unit_of_measurement: "μg/m³"
       value_template: "{{ states.sensor.airly.state.split(' ')[2] }}"
     airly_pressure:
       friendly_name: "Pressure"
@@ -42,12 +42,12 @@
     airly_quality:
       friendly_name: "Air quality"
       icon_template: mdi:quicktime
-      unit_of_measurement: "AQI"
+      unit_of_measurement: "CAQI"
       value_template: "{{ states.sensor.airly.state.split(' ')[6] }}"
     airly_aqi:
-      friendly_name: "AQI"
+      friendly_name: "CAQI"
       icon_template: mdi:database
-      unit_of_measurement: 'AQI'
+      unit_of_measurement: 'CAQI'
       value_template: "{{ states.sensor.airly.state.split(' ')[7] | float | round(1) }}"
     airly_description:
       friendly_name: "Info"

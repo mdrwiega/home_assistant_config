@@ -1,0 +1,76 @@
+- type: grid
+  title: Temperature and Humidity
+  columns: 2
+  square: false
+  cards:
+    - graph: line
+      type: sensor
+      entity: sensor.zhimi_airp_mb5_temperature
+      name: Air Purifier 4
+    - graph: line
+      type: sensor
+      entity: sensor.zhimi_airp_mb5_humidity
+      name: Air Purifier 4
+    - graph: line
+      type: sensor
+      entity: sensor.zhimi_humidifier_cb1_temperature
+      name: Humidifier
+    - graph: line
+      type: sensor
+      entity: sensor.zhimi_humidifier_cb1_humidity
+      name: Humidifier
+    - graph: line
+      type: sensor
+      entity: sensor.zhimi_airpurifier_mc1_temperature
+      name: Air Purifier 2S
+    - graph: line
+      type: sensor
+      entity: sensor.zhimi_airpurifier_mc1_humidity
+      name: Air Purifier 2S
+    - graph: line
+      type: sensor
+      entity: sensor.airly_temperature
+      name: Outdoors
+    - graph: line
+      type: sensor
+      entity: sensor.airly_humidity
+      name: Outdoors
+
+# Sensory Xiaomi BLE
+- type: grid
+  title: Xiaomi BLE
+  columns: 2
+  square: false
+  cards:
+    - graph: line
+      type: sensor
+      entity: sensor.temperature_humidity_sensor_5522_temperature
+      name: Desk M
+    - graph: line
+      type: sensor
+      entity: sensor.temperature_humidity_sensor_5522_humidity
+      name: Desk M
+    - graph: line
+      type: sensor
+      entity: sensor.temperature_humidity_sensor_111a_temperature
+      name: Desk A
+    - graph: line
+      type: sensor
+      entity: sensor.temperature_humidity_sensor_111a_humidity
+      name: Desk A
+    - graph: line
+      type: sensor
+      entity: sensor.temperature_humidity_sensor_5bb2_temperature
+      name: Living room
+    - graph: line
+      type: sensor
+      entity: sensor.temperature_humidity_sensor_5bb2_humidity
+      name: Living room
+    - graph: line
+      type: sensor
+      entity: sensor.temperature_humidity_sensor_de16_temperature
+      name: Bedroom
+    - graph: line
+      type: sensor
+      entity: sensor.temperature_humidity_sensor_de16_humidity
+      name: Bedroom
