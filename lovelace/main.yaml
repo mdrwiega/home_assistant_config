@@ -44,6 +44,9 @@
           name: Humidifier
           state_color: true
           type: button
+    - type: thermostat
+      entity: climate.1e57f34a
+      name: Air conditioner
     # Vacuum cleaner
     - type: entities
       entities:
@@ -86,7 +89,6 @@
           name: Air Purifier 2S
           state_color: true
           type: button
-
 # Outdoors
 - type: vertical-stack
   title: Outdoors

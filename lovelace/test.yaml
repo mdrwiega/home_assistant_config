@@ -66,6 +66,18 @@
     name: Humidifier
 
 - type: entities
+  entities:
+    - entity: switch.1e57f34a_fresh_air
+      name: Fresh Air
+    - entity: switch.1e57f34a_panel_light
+      name: Panel Light
+    - entity: switch.1e57f34a_quiet
+      name: Quiet
+    - entity: switch.1e57f34a_xfan
+      name: XFan
+  title: Air conditioner
+
+- type: entities
   show_header_toggle: false
   entities:
     - entity: number.salon_bass
@@ -133,3 +145,4 @@
 #       hours_to_show: 72
 #       title: Humidity
 #       type: history-graph
+
