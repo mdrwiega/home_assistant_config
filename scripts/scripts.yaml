@@ -1,13 +1,13 @@
-set_linak_desk_height:
-  sequence:
-    - service: mqtt.publish
-      data:
-        payload: "{{ height_cm }}"
-        topic: linak_desk/set_height
-        retain: true
+# set_linak_desk_height:
+#   sequence:
+#     - service: mqtt.publish
+#       data:
+#         payload: "{{ height_cm }}"
+#         topic: linak_desk/set_height
+#         retain: true
 
-message_temperature:
-  sequence:
-    - service: notify.notifier_mail_all
-      data:
-        message: Current temperature is 10
+# message_temperature:
+#   sequence:
+#     - service: notify.notifier_mail_all
+#       data:
+#         message: Current temperature is 10

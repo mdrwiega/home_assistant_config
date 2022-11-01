@@ -1,28 +1,28 @@
-- alias: Start Cleaning Room
-  trigger:
-    - platform: state
-      entity_id: input_select.vacuum_room
-      from: 'Select Input'
-  action:
-    - service: script.vacuum_dispatch
-      data_template:
-        room: "{{ trigger.to_state.state }}"
-    - service: input_select.select_option
-      entity_id: input_select.vacuum_room
-      data_template:
-        option: "Select Input"
+# - alias: Start Cleaning Room
+#   trigger:
+#     - platform: state
+#       entity_id: input_select.vacuum_room
+#       from: 'Select Input'
+#   action:
+#     - service: script.vacuum_dispatch
+#       data_template:
+#         room: "{{ trigger.to_state.state }}"
+#     - service: input_select.select_option
+#       entity_id: input_select.vacuum_room
+#       data_template:
+#         option: "Select Input"
 
-# Turn off humidifier if water level below 10%
-- id: humidification_stop
-  alias: "Humidification Stop"
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.mi_humidifier_w
-      below: 10
-  action:
-    - service: fan.turn_off
-      entity_id: fan.Humidifier
-    - service: notify.notifier_mail_all
-      data:
-        title: "Uzupełnij wodę w nawilżaczu"
-        message: "Nawilżacz został wyłączony ponieważ w zbiorniku pozostało {{ states('sensor.mi_humidifier_w') }}% wody."
+# # Turn off humidifier if water level below 10%
+# - id: humidification_stop
+#   alias: "Humidification Stop"
+#   trigger:
+#     - platform: numeric_state
+#       entity_id: sensor.mi_humidifier_w
+#       below: 10
+#   action:
+#     - service: fan.turn_off
+#       entity_id: fan.Humidifier
+#     - service: notify.notifier_mail_all
+#       data:
+#         title: "Uzupełnij wodę w nawilżaczu"
+#         message: "Nawilżacz został wyłączony ponieważ w zbiorniku pozostało {{ states('sensor.mi_humidifier_w') }}% wody."
