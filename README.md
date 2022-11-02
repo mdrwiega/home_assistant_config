@@ -31,6 +31,7 @@ This is a first version of my smart home system based on the [Home Assistant](ht
 
 - [Xiaomi Vacuum Card](https://github.com/benct/lovelace-xiaomi-vacuum-card)
 - [Battery Entity](https://github.com/cbulock/lovelace-battery-entity)
+- [stack-in-card](https://github.com/custom-cards/stack-in-card)
 
 ## Hardware
 
