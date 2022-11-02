@@ -1,0 +1,28 @@
+- platform: template
+  sensors:
+    # Air purifier 4 (living room)
+    air_purifier_4_mode_favorite:
+      value_template: "{{ state_attr('fan.zhimi_airp_mb5', 'preset_mode') ==  'Favorite' }}"
+    air_purifier_4_mode_silent:
+      value_template: "{{ state_attr('fan.zhimi_airp_mb5', 'preset_mode') ==  'Silent' }}"
+    air_purifier_4_mode_on:
+      value_template: "{{ not is_state('fan.zhimi_airp_mb5', 'off') }}"
+    air_purifier_4_mode_fan_1:
+      value_template: "{{ state_attr('fan.zhimi_airp_mb5', 'preset_mode') ==  'Fan' and is_state('number.zhimi_airp_mb5_fan_level', '1') }}"
+    air_purifier_4_mode_fan_2:
+      value_template: "{{ state_attr('fan.zhimi_airp_mb5', 'preset_mode') ==  'Fan' and is_state('number.zhimi_airp_mb5_fan_level', '2') }}"
+    air_purifier_4_mode_fan_3:
+      value_template: "{{ state_attr('fan.zhimi_airp_mb5', 'preset_mode') ==  'Fan' and is_state('number.zhimi_airp_mb5_fan_level', '3') }}"
+    # Air purifier 2S (bedroom)
+    air_purifier_2s_mode_favorite:
+      value_template: "{{ state_attr('fan.zhimi_airpurifier_mc1', 'preset_mode') ==  'Favorite' }}"
+    air_purifier_2s_mode_silent:
+      value_template: "{{ state_attr('fan.zhimi_airpurifier_mc1', 'preset_mode') ==  'Silent' }}"
+    air_purifier_2s_mode_on:
+      value_template: "{{ not is_state('fan.zhimi_airpurifier_mc1', 'off') }}"
+    air_purifier_2s_mode_fan_1:
+      value_template: "{{ state_attr('fan.zhimi_airpurifier_mc1', 'preset_mode') ==  'Fan' and is_state('number.zhimi_airpurifier_mc1_fan_level', '1') }}"
+    air_purifier_2s_mode_fan_2:
+      value_template: "{{ state_attr('fan.zhimi_airpurifier_mc1', 'preset_mode') ==  'Fan' and is_state('number.zhimi_airpurifier_mc1_fan_level', '2') }}"
+    air_purifier_2s_mode_fan_3:
+      value_template: "{{ state_attr('fan.zhimi_airpurifier_mc1', 'preset_mode') ==  'Fan' and is_state('number.zhimi_airpurifier_mc1_fan_level', '3') }}"

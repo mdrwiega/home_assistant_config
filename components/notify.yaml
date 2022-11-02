@@ -1,4 +1,4 @@
-- name: notifier_mail_all
+- name: notify_smtp
   platform: smtp
   server: smtp.gmail.com
   port: 587
