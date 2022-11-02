@@ -19,3 +19,4 @@ views:
     cards: !include lovelace/temperature.yaml
     path: temperature
     icon: mdi:home-thermometer
+

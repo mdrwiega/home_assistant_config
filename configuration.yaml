@@ -19,15 +19,12 @@ lovelace:
   resources:
     - url: /local/xiaomi_vacuum/xiaomi-vacuum-card.js
       type: module
-    - url: /local/air_purifier/air-purifier-card.js
-      type: module
     - url: /local/battery-entity.js
+      type: module
+    - url: /local/stack-in-card.js
       type: module
 
 automation: !include_dir_merge_list automations
-
-# Uncomment after fix on the air conditioner integration
-# climate: !include components/climate.yaml
 
 discovery:
   ignore:
@@ -58,3 +55,4 @@ yeelight: !include components/yeelight.yaml
 #     entities:
 #       - sensor.airly_temperature
 
+binary_sensor: !include components/binary_sensor.yaml

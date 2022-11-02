@@ -1,0 +1,35 @@
+- id: '1667347431309'
+  alias: Nowa automatyzacja
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.zhimi_airp_mb5_pm2_5
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+    above: 1
+  condition: []
+  action:
+  - service: notify.notify_smtp
+    data:
+      message: test
+  mode: single
+- id: '1667347999556'
+  alias: Notify if air quality is low for a while1
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.zhimi_airpurifier_mc1_temperature
+    value_template: '{{ float(state.state) + 2 }}'
+    above: 1
+  condition: []
+  action:
+  - service: notify.notify_smtp
+    data:
+      title: '[HA] Zła jakość powietrza!'
+      message: "Bieżące odczyty:\n - Na zewnątrz PM2.5 = {{ states('sensor.airly_pm25')
+        }} µg/m³ \n - Air Purifier 2S PM2.5 = {{ states('sensor.zhimi_airpurifier_mc1_pm2_5')
+        }} µg/m³ \n - Air Purifier 4 PM2.5 = {{ states('sensor.zhimi_airp_mb5_pm2_5')
+        }} µg/m³ \n\n Włącz oczyszczacz powietrza!"
+  mode: single
