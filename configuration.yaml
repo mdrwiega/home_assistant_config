@@ -23,6 +23,8 @@ lovelace:
       type: module
     - url: /local/stack-in-card.js
       type: module
+    - url: /local/air-purifier-card.js
+      type: module
 
 automation: !include_dir_merge_list automations
 
