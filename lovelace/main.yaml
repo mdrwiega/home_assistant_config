@@ -36,66 +36,60 @@
           name: Humidifier
           state_color: true
           type: button
-
-    - type: grid
-      columns: 2
-      square: true
+    - type: horizontal-stack
       cards:
-      - type: custom:stack-in-card
+      - type: vertical-stack
         cards:
-        - type: "custom:air-purifier-card"
-          entity: fan.zhimi_airp_mb5
-          name: Air Purifier 4
-          buttons:
-            - name: Auto
-              icon: mdi:refresh-auto
-              preset_mode: Favorite
-            - name: Silent
-              icon: 'mdi:power-sleep'
-              preset_mode: Silent
-            - name: 33%
-              icon: 'mdi:circle-slice-3'
-              percentage: 33
-              preset_mode: Fan
-            - name: 66%
-              icon: 'mdi:circle-slice-5'
-              percentage: 66
-              preset_mode: Fan
-            - name: 100%
-              icon: 'mdi:circle-slice-8'
-              percentage: 100
-              preset_mode: Fan
-            # Alternative way
-            # - name: service1
-            #   icon: 'mdi:circle-slice-1'
-            #   preset_mode: Fan
-            #   service: number.set_value
-            #   service_data:
-            #     entity_id: number.zhimi_airp_mb5_fan_level
-            #     value: 1
-            #   service_active_state: 1
-        - graph: line
-          type: sensor
-          entity: sensor.zhimi_airp_mb5_pm2_5
-          name: PM2.5
+        - type: custom:stack-in-card
+          cards:
+          - type: "custom:air-purifier-card"
+            entity: fan.zhimi_airp_mb5
+            name: Air Purifier 4
+            buttons:
+              - name: Auto
+                icon: mdi:refresh-auto
+                preset_mode: Favorite
+              - name: Silent
+                icon: 'mdi:power-sleep'
+                preset_mode: Silent
+              - name: 33%
+                icon: 'mdi:circle-slice-3'
+                percentage: 33
+                preset_mode: Fan
+              - name: 66%
+                icon: 'mdi:circle-slice-5'
+                percentage: 66
+                preset_mode: Fan
+              - name: 100%
+                icon: 'mdi:circle-slice-8'
+                percentage: 100
+                preset_mode: Fan
+              # Alternative way
+              # - name: service1
+              #   icon: 'mdi:circle-slice-1'
+              #   preset_mode: Fan
+              #   service: number.set_value
+              #   service_data:
+              #     entity_id: number.zhimi_airp_mb5_fan_level
+              #     value: 1
+              #   service_active_state: 1
+          - graph: line
+            type: sensor
+            entity: sensor.zhimi_airp_mb5_pm2_5
+            name: PM2.5
+        # Vacuum cleaner
+        - type: entities
+          entities:
+            - type: "custom:xiaomi-vacuum-card"
+              entity: vacuum.roborock_vacuum_s5
+              name: 'Vacuum Cleaner'
+              vendor: xiaomi
+              attributes: false
+            - entity: input_select.vacuum_room
 
       - type: thermostat
         entity: climate.1e57f34a
         name: Air conditioner
-
-
-    # Vacuum cleaner
-    - type: entities
-      entities:
-        - type: "custom:xiaomi-vacuum-card"
-          entity: vacuum.roborock_vacuum_s5
-          name: ' '
-          vendor: xiaomi
-          image: /local/xiaomi_vacuum/vacuum.png
-          attributes: false
-        - entity: input_select.vacuum_room
-
-
 
 - type: vertical-stack
   title: Bedroom
@@ -112,14 +106,34 @@
           name: " "
     - type: grid
       columns: 3
-      square: false
       cards:
-        - entity: light.bedroom_ceiling_lamp
-          name: ""
-          type: light
-        - entity: light.bedroom_ceiling_lamp_nightlight
-          name: ""
-          type: light
+      - entity: light.bedroom_ceiling_lamp
+        name: ""
+        type: light
+      - entity: light.bedroom_ceiling_lamp_nightlight
+        name: ""
+        type: light
+    - type: grid
+      columns: 2
+      square: true
+      cards:
+        - type: custom:stack-in-card
+          cards:
+          - type: "custom:air-purifier-card"
+            entity: fan.zhimi_airpurifier_mc1
+            name: Air Purifier 2S
+            buttons:
+              - name: Auto
+                icon: mdi:refresh-auto
+                preset_mode: Favorite
+              - name: Silent
+                icon: 'mdi:power-sleep'
+                preset_mode: Silent
+          - graph: line
+            type: sensor
+            entity: sensor.zhimi_airpurifier_mc1_pm2_5
+            name: PM2.5
+
 # Outdoors
 - type: vertical-stack
   title: Outdoors
@@ -165,63 +179,7 @@
       url: https://embed.windy.com/embed2.html?lat=51.14&lon=16.93&zoom=8&level=surface&overlay=wind&menu=&message=&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=51.14&detailLon=16.93&metricWind=default&metricTemp=default&radarRange=-1
       aspect_ratio: 80%
 
-- type: grid
-  columns: 2
-  square: true
-  cards:
-    - type: custom:stack-in-card
-      cards:
-      - type: "custom:air-purifier-card"
-        entity: fan.zhimi_airp_mb5
-        name: Air Purifier 4
-        buttons:
-          - name: Auto
-            icon: mdi:refresh-auto
-            preset_mode: Favorite
-          - name: Silent
-            icon: 'mdi:power-sleep'
-            preset_mode: Silent
-          - name: 33%
-            icon: 'mdi:circle-slice-3'
-            percentage: 33
-            preset_mode: Fan
-          - name: 66%
-            icon: 'mdi:circle-slice-5'
-            percentage: 66
-            preset_mode: Fan
-          - name: 100%
-            icon: 'mdi:circle-slice-8'
-            percentage: 100
-            preset_mode: Fan
-          # Alternative way
-          # - name: service1
-          #   icon: 'mdi:circle-slice-1'
-          #   preset_mode: Fan
-          #   service: number.set_value
-          #   service_data:
-          #     entity_id: number.zhimi_airp_mb5_fan_level
-          #     value: 1
-          #   service_active_state: 1
-      - graph: line
-        type: sensor
-        entity: sensor.zhimi_airp_mb5_pm2_5
-        name: PM2.5
-    - type: custom:stack-in-card
-      cards:
-      - type: "custom:air-purifier-card"
-        entity: fan.zhimi_airpurifier_mc1
-        name: Air Purifier 2S
-        buttons:
-          - name: Auto
-            icon: mdi:refresh-auto
-            preset_mode: Favorite
-          - name: Silent
-            icon: 'mdi:power-sleep'
-            preset_mode: Silent
-      - graph: line
-        type: sensor
-        entity: sensor.zhimi_airpurifier_mc1_pm2_5
-        name: PM2.5
+
 
 # - type: grid
 #   columns: 2
