@@ -36,9 +36,54 @@
           name: Humidifier
           state_color: true
           type: button
-    - type: thermostat
-      entity: climate.1e57f34a
-      name: Air conditioner
+
+    - type: grid
+      columns: 2
+      square: true
+      cards:
+      - type: custom:stack-in-card
+        cards:
+        - type: "custom:air-purifier-card"
+          entity: fan.zhimi_airp_mb5
+          name: Air Purifier 4
+          buttons:
+            - name: Auto
+              icon: mdi:refresh-auto
+              preset_mode: Favorite
+            - name: Silent
+              icon: 'mdi:power-sleep'
+              preset_mode: Silent
+            - name: 33%
+              icon: 'mdi:circle-slice-3'
+              percentage: 33
+              preset_mode: Fan
+            - name: 66%
+              icon: 'mdi:circle-slice-5'
+              percentage: 66
+              preset_mode: Fan
+            - name: 100%
+              icon: 'mdi:circle-slice-8'
+              percentage: 100
+              preset_mode: Fan
+            # Alternative way
+            # - name: service1
+            #   icon: 'mdi:circle-slice-1'
+            #   preset_mode: Fan
+            #   service: number.set_value
+            #   service_data:
+            #     entity_id: number.zhimi_airp_mb5_fan_level
+            #     value: 1
+            #   service_active_state: 1
+        - graph: line
+          type: sensor
+          entity: sensor.zhimi_airp_mb5_pm2_5
+          name: PM2.5
+
+      - type: thermostat
+        entity: climate.1e57f34a
+        name: Air conditioner
+
+
     # Vacuum cleaner
     - type: entities
       entities:
@@ -49,6 +94,8 @@
           image: /local/xiaomi_vacuum/vacuum.png
           attributes: false
         - entity: input_select.vacuum_room
+
+
 
 - type: vertical-stack
   title: Bedroom
@@ -118,222 +165,232 @@
       url: https://embed.windy.com/embed2.html?lat=51.14&lon=16.93&zoom=8&level=surface&overlay=wind&menu=&message=&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=51.14&detailLon=16.93&metricWind=default&metricTemp=default&radarRange=-1
       aspect_ratio: 80%
 
-# Air purifier 4 (living room)
 - type: grid
   columns: 2
   square: true
   cards:
-  - type: custom:stack-in-card
-    cards:
-    - type: picture-elements
-      image: local/background.png
-      title: Air Purifier 4
-      elements:
-        - type: state-icon
-          entity: binary_sensor.air_purifier_4_mode_favorite
-          title: Auto
-          icon: mdi:refresh-auto
-          tap_action:
-            action: call-service
-            service: fan.set_preset_mode
-            service_data:
-              entity_id: fan.zhimi_airp_mb5
-              preset_mode: Favorite
-          style:
-            top: 0%
-            left: 10%
-            transform: translate(-50%, -50%) scale(1.2)
-            '--paper-item-icon-color': rgb(192, 192, 192)
-            '--paper-item-icon-active-color': rgb(255, 192, 0)
-        - type: state-icon
-          entity: binary_sensor.air_purifier_4_mode_silent
-          title: Silent
-          icon: mdi:power-sleep
-          tap_action:
-            action: call-service
-            service: fan.set_preset_mode
-            service_data:
-              entity_id: fan.zhimi_airp_mb5
-              preset_mode: Silent
-          style:
-            top: 0%
-            left: 26%
-            transform: translate(-50%, -50%) scale(1.2)
-            '--paper-item-icon-color': rgb(192, 192, 192)
-            '--paper-item-icon-active-color': rgb(255, 192, 0)
-        - type: state-icon
-          entity: binary_sensor.air_purifier_4_mode_fan_1
-          title: Fan level 1
-          icon: mdi:fan-speed-1
-          tap_action:
-            action: call-service
-            service: number.set_value
-            service_data:
-              entity_id: number.zhimi_airp_mb5_fan_level
-              value: 1
-          style:
-            top: 0%
-            left: 42%
-            transform: translate(-50%, -50%) scale(1.2)
-            '--paper-item-icon-color': rgb(192, 192, 192)
-            '--paper-item-icon-active-color': rgb(255, 192, 0)
-        - type: state-icon
-          entity: binary_sensor.air_purifier_4_mode_fan_2
-          title: Fan level 2
-          icon: mdi:fan-speed-2
-          tap_action:
-            action: call-service
-            service: number.set_value
-            service_data:
-              entity_id: number.zhimi_airp_mb5_fan_level
-              value: 2
-          style:
-            top: 0%
-            left: 58%
-            transform: translate(-50%, -50%) scale(1.2)
-            '--paper-item-icon-color': rgb(192, 192, 192)
-            '--paper-item-icon-active-color': rgb(255, 192, 0)
-        - type: state-icon
-          entity: binary_sensor.air_purifier_4_mode_fan_3
-          title: Fan level 3
-          icon: mdi:fan-speed-3
-          tap_action:
-            action: call-service
-            service: number.set_value
-            service_data:
-              entity_id: number.zhimi_airp_mb5_fan_level
-              value: 3
-          style:
-            top: 0%
-            left: 74%
-            transform: translate(-50%, -50%) scale(1.2)
-            '--paper-item-icon-color': rgb(192, 192, 192)
-            '--paper-item-icon-active-color': rgb(255, 192, 0)
-        - type: state-icon
-          entity: binary_sensor.air_purifier_4_mode_on
-          title: 'On'
-          icon: mdi:power-standby
-          tap_action:
-            action: call-service
-            service: fan.toggle
-            service_data:
-              entity_id: fan.zhimi_airp_mb5
-          style:
-            top: 0%
-            left: 90%
-            transform: translate(-50%, -50%) scale(1.2)
-            '--paper-item-icon-color': rgb(192, 192, 192)
-            '--paper-item-icon-active-color': rgb(255, 192, 0)
-    - graph: line
-      type: sensor
-      entity: sensor.zhimi_airp_mb5_pm2_5
-      name: PM2.5
-  # Air purifier 2S (bedroom)
-  - type: custom:stack-in-card
-    cards:
-    - type: picture-elements
-      image: local/background.png
-      title: Air Purifier 2S
-      elements:
-        - type: state-icon
-          entity: binary_sensor.air_purifier_2s_mode_favorite
-          title: Auto
-          icon: mdi:refresh-auto
-          tap_action:
-            action: call-service
-            service: fan.set_preset_mode
-            service_data:
-              entity_id: fan.zhimi_airpurifier_mc1
-              preset_mode: Favorite
-          style:
-            top: 0%
-            left: 10%
-            transform: translate(-50%, -50%) scale(1.2)
-            '--paper-item-icon-color': rgb(192, 192, 192)
-            '--paper-item-icon-active-color': rgb(255, 192, 0)
-        - type: state-icon
-          entity: binary_sensor.air_purifier_2s_mode_silent
-          title: Silent
-          icon: mdi:power-sleep
-          tap_action:
-            action: call-service
-            service: fan.set_preset_mode
-            service_data:
-              entity_id: fan.zhimi_airpurifier_mc1
-              preset_mode: Silent
-          style:
-            top: 0%
-            left: 26%
-            transform: translate(-50%, -50%) scale(1.2)
-            '--paper-item-icon-color': rgb(192, 192, 192)
-            '--paper-item-icon-active-color': rgb(255, 192, 0)
-        # - type: state-icon
-        #   entity: binary_sensor.air_purifier_2s_mode_fan_1
-        #   title: Fan level 1
-        #   icon: mdi:fan-speed-1
-        #   tap_action:
-        #     action: call-service
-        #     service: number.set_value
-        #     service_data:
-        #       entity_id: number.zhimi_airpurifier_mc1_fan_level
-        #       value: 1
-        #   style:
-        #     top: 0%
-        #     left: 26%
-        #     transform: translate(-50%, -50%) scale(1.2)
-        #     '--paper-item-icon-color': rgb(192, 192, 192)
-        #     '--paper-item-icon-active-color': rgb(255, 192, 0)
-        # - type: state-icon
-        #   entity: binary_sensor.air_purifier_2s_mode_fan_2
-        #   title: Fan level 2
-        #   icon: mdi:fan-speed-2
-        #   tap_action:
-        #     action: call-service
-        #     service: number.set_value
-        #     service_data:
-        #       entity_id: number.zhimi_airpurifier_mc1_fan_level
-        #       value: 2
-        #   style:
-        #     top: 0%
-        #     left: 42%
-        #     transform: translate(-50%, -50%) scale(1.2)
-        #     '--paper-item-icon-color': rgb(192, 192, 192)
-        #     '--paper-item-icon-active-color': rgb(255, 192, 0)
-        # - type: state-icon
-        #   entity: binary_sensor.air_purifier_2s_mode_fan_3
-        #   title: Fan level 3
-        #   icon: mdi:fan-speed-3
-        #   tap_action:
-        #     action: call-service
-        #     service: number.set_value
-        #     service_data:
-        #       entity_id: number.zhimi_airpurifier_mc1_fan_level
-        #       value: 3
-        #   style:
-        #     top: 0%
-        #     left: 58%
-        #     transform: translate(-50%, -50%) scale(1.2)
-        #     '--paper-item-icon-color': rgb(192, 192, 192)
-        #     '--paper-item-icon-active-color': rgb(255, 192, 0)
-        - type: state-icon
-          entity: binary_sensor.air_purifier_2s_mode_on
-          title: 'On'
-          icon: mdi:power-standby
-          tap_action:
-            action: call-service
-            service: fan.toggle
-            service_data:
-              entity_id: fan.zhimi_airpurifier_mc1
-          style:
-            top: 0%
-            left: 90%
-            transform: translate(-50%, -50%) scale(1.2)
-            '--paper-item-icon-color': rgb(192, 192, 192)
-            '--paper-item-icon-active-color': rgb(255, 192, 0)
-    - graph: line
-      type: sensor
-      entity: sensor.zhimi_airpurifier_mc1_pm2_5
-      name: PM2.5
+    - type: custom:stack-in-card
+      cards:
+      - type: "custom:air-purifier-card"
+        entity: fan.zhimi_airp_mb5
+        name: Air Purifier 4
+        buttons:
+          - name: Auto
+            icon: mdi:refresh-auto
+            preset_mode: Favorite
+          - name: Silent
+            icon: 'mdi:power-sleep'
+            preset_mode: Silent
+          - name: 33%
+            icon: 'mdi:circle-slice-3'
+            percentage: 33
+            preset_mode: Fan
+          - name: 66%
+            icon: 'mdi:circle-slice-5'
+            percentage: 66
+            preset_mode: Fan
+          - name: 100%
+            icon: 'mdi:circle-slice-8'
+            percentage: 100
+            preset_mode: Fan
+          # Alternative way
+          # - name: service1
+          #   icon: 'mdi:circle-slice-1'
+          #   preset_mode: Fan
+          #   service: number.set_value
+          #   service_data:
+          #     entity_id: number.zhimi_airp_mb5_fan_level
+          #     value: 1
+          #   service_active_state: 1
+      - graph: line
+        type: sensor
+        entity: sensor.zhimi_airp_mb5_pm2_5
+        name: PM2.5
+    - type: custom:stack-in-card
+      cards:
+      - type: "custom:air-purifier-card"
+        entity: fan.zhimi_airpurifier_mc1
+        name: Air Purifier 2S
+        buttons:
+          - name: Auto
+            icon: mdi:refresh-auto
+            preset_mode: Favorite
+          - name: Silent
+            icon: 'mdi:power-sleep'
+            preset_mode: Silent
+      - graph: line
+        type: sensor
+        entity: sensor.zhimi_airpurifier_mc1_pm2_5
+        name: PM2.5
+
+# - type: grid
+#   columns: 2
+#   square: true
+#   cards:
+# # Air purifier 4 (living room)
+#   - type: custom:stack-in-card
+#     cards:
+#     - type: picture-elements
+#       image: local/background.png
+#       title: Air Purifier 4
+#       elements:
+#         - type: state-icon
+#           entity: binary_sensor.air_purifier_4_mode_favorite
+#           title: Auto
+#           icon: mdi:refresh-auto
+#           tap_action:
+#             action: call-service
+#             service: fan.set_preset_mode
+#             service_data:
+#               entity_id: fan.zhimi_airp_mb5
+#               preset_mode: Favorite
+#           style:
+#             top: 0%
+#             left: 10%
+#             transform: translate(-50%, -50%) scale(1.2)
+#             '--paper-item-icon-color': rgb(192, 192, 192)
+#             '--paper-item-icon-active-color': rgb(255, 192, 0)
+#         - type: state-icon
+#           entity: binary_sensor.air_purifier_4_mode_silent
+#           title: Silent
+#           icon: mdi:power-sleep
+#           tap_action:
+#             action: call-service
+#             service: fan.set_preset_mode
+#             service_data:
+#               entity_id: fan.zhimi_airp_mb5
+#               preset_mode: Silent
+#           style:
+#             top: 0%
+#             left: 26%
+#             transform: translate(-50%, -50%) scale(1.2)
+#             '--paper-item-icon-color': rgb(192, 192, 192)
+#             '--paper-item-icon-active-color': rgb(255, 192, 0)
+#         - type: state-icon
+#           entity: binary_sensor.air_purifier_4_mode_fan_1
+#           title: Fan level 1
+#           icon: mdi:fan-speed-1
+#           tap_action:
+#             action: call-service
+#             service: number.set_value
+#             service_data:
+#               entity_id: number.zhimi_airp_mb5_fan_level
+#               value: 1
+#           style:
+#             top: 0%
+#             left: 42%
+#             transform: translate(-50%, -50%) scale(1.2)
+#             '--paper-item-icon-color': rgb(192, 192, 192)
+#             '--paper-item-icon-active-color': rgb(255, 192, 0)
+#         - type: state-icon
+#           entity: binary_sensor.air_purifier_4_mode_fan_2
+#           title: Fan level 2
+#           icon: mdi:fan-speed-2
+#           tap_action:
+#             action: call-service
+#             service: number.set_value
+#             service_data:
+#               entity_id: number.zhimi_airp_mb5_fan_level
+#               value: 2
+#           style:
+#             top: 0%
+#             left: 58%
+#             transform: translate(-50%, -50%) scale(1.2)
+#             '--paper-item-icon-color': rgb(192, 192, 192)
+#             '--paper-item-icon-active-color': rgb(255, 192, 0)
+#         - type: state-icon
+#           entity: binary_sensor.air_purifier_4_mode_fan_3
+#           title: Fan level 3
+#           icon: mdi:fan-speed-3
+#           tap_action:
+#             action: call-service
+#             service: number.set_value
+#             service_data:
+#               entity_id: number.zhimi_airp_mb5_fan_level
+#               value: 3
+#           style:
+#             top: 0%
+#             left: 74%
+#             transform: translate(-50%, -50%) scale(1.2)
+#             '--paper-item-icon-color': rgb(192, 192, 192)
+#             '--paper-item-icon-active-color': rgb(255, 192, 0)
+#         - type: state-icon
+#           entity: binary_sensor.air_purifier_4_mode_on
+#           title: 'On'
+#           icon: mdi:power-standby
+#           tap_action:
+#             action: call-service
+#             service: fan.toggle
+#             service_data:
+#               entity_id: fan.zhimi_airp_mb5
+#           style:
+#             top: 0%
+#             left: 90%
+#             transform: translate(-50%, -50%) scale(1.2)
+#             '--paper-item-icon-color': rgb(192, 192, 192)
+#             '--paper-item-icon-active-color': rgb(255, 192, 0)
+#     - graph: line
+#       type: sensor
+#       entity: sensor.zhimi_airp_mb5_pm2_5
+#       name: PM2.5
+#   # Air purifier 2S (bedroom)
+#   - type: custom:stack-in-card
+#     cards:
+#     - type: picture-elements
+#       image: local/background.png
+#       title: Air Purifier 2S
+#       elements:
+#         - type: state-icon
+#           entity: binary_sensor.air_purifier_2s_mode_favorite
+#           title: Auto
+#           icon: mdi:refresh-auto
+#           tap_action:
+#             action: call-service
+#             service: fan.set_preset_mode
+#             service_data:
+#               entity_id: fan.zhimi_airpurifier_mc1
+#               preset_mode: Favorite
+#           style:
+#             top: 0%
+#             left: 10%
+#             transform: translate(-50%, -50%) scale(1.2)
+#             '--paper-item-icon-color': rgb(192, 192, 192)
+#             '--paper-item-icon-active-color': rgb(255, 192, 0)
+#         - type: state-icon
+#           entity: binary_sensor.air_purifier_2s_mode_silent
+#           title: Silent
+#           icon: mdi:power-sleep
+#           tap_action:
+#             action: call-service
+#             service: fan.set_preset_mode
+#             service_data:
+#               entity_id: fan.zhimi_airpurifier_mc1
+#               preset_mode: Silent
+#           style:
+#             top: 0%
+#             left: 26%
+#             transform: translate(-50%, -50%) scale(1.2)
+#             '--paper-item-icon-color': rgb(192, 192, 192)
+#             '--paper-item-icon-active-color': rgb(255, 192, 0)
+#         - type: state-icon
+#           entity: binary_sensor.air_purifier_2s_mode_on
+#           title: 'On'
+#           icon: mdi:power-standby
+#           tap_action:
+#             action: call-service
+#             service: fan.toggle
+#             service_data:
+#               entity_id: fan.zhimi_airpurifier_mc1
+#           style:
+#             top: 0%
+#             left: 90%
+#             transform: translate(-50%, -50%) scale(1.2)
+#             '--paper-item-icon-color': rgb(192, 192, 192)
+#             '--paper-item-icon-active-color': rgb(255, 192, 0)
+#     - graph: line
+#       type: sensor
+#       entity: sensor.zhimi_airpurifier_mc1_pm2_5
+#       name: PM2.5
 
 # Multimedia
 - type: vertical-stack
