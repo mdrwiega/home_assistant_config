@@ -1,8 +1,0 @@
-- platform: xiaomi_miio
-  host: !secret xiaomi_purifier_ip        
-  token: !secret xiaomi_purifier_token
-  name: Air Purifier
-- platform: xiaomi_miio
-  host: !secret xiaomi_humidifier_ip
-  token: !secret xiaomi_humidifier_token
-  name: Humidifier

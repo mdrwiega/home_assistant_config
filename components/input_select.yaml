@@ -1,10 +1,9 @@
 vacuum_room:
   name: Choose a room to clean
   options:
-    - Select Input
     - Bedroom
     - Kitchen
     - Living Room
     - Bathroom
     - All
-  initial: Select Input
+  initial: All
