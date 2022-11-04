@@ -108,40 +108,14 @@
     entity: sensor.temperature_humidity_sensor_5bb2_battery
     name: Xiaomi sensor - living room
 
-# - entity: climate.air_conditioner_c_h
-#   name: Air conditioner
-#   type: thermostat
-
-# - type: entities
-#   entities:
-#     - type: custom:air-purifier-card
-#       entity: fan.zhimi_airpurifier_mc1
-#   title: zhimi.airpurifier.2s
-
-# - type: vertical-stack
-#   cards:
-#     - entities:
-#         - entity: sensor.zhimi_airpurifier_mc1_pm2_5
-#           name: Inside
-#         - entity: sensor.airly_pm25
-#           name: Outside
-#       hours_to_show: 72
-#       title: Air quality
-#       type: history-graph
-#     - entities:
-#         - entity: sensor.zhimi_airpurifier_mc1_temperature
-#           name: Inside
-#         - entity: sensor.airly_temperature
-#           name: Outside
-#       hours_to_show: 72
-#       refresh_interval: 0
-#       title: Temperature
-#       type: history-graph
-#     - entities:
-#         - entity: sensor.zhimi_airpurifier_mc1_humidity
-#           name: Inside
-#         - entity: sensor.airly_humidity
-#           name: Outside
-#       hours_to_show: 72
-#       title: Humidity
-#       type: history-graph
+- type: entities
+  title: Vacuum cleaner
+  entities:
+  - entity: sensor.roborock_vacuum_s5_main_brush_left
+    name: "Main brush left"
+  - entity: sensor.roborock_vacuum_s5_side_brush_left
+    name: "Side brush left"
+  - entity: sensor.roborock_vacuum_s5_filter_left
+    name: "Filter left"
+  - entity: sensor.roborock_vacuum_s5_sensor_dirty_left
+    name: "Sensor dirty left"

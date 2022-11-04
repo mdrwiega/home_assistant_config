@@ -11,7 +11,7 @@ views:
     icon: mdi:server-security
 
   - title: Configuration
-    cards: !include lovelace/test.yaml
+    cards: !include lovelace/configuration.yaml
     path: configuration
     icon: mdi:cog
 
@@ -19,12 +19,3 @@ views:
     cards: !include lovelace/temperature.yaml
     path: temperature
     icon: mdi:home-thermometer
-
-  # - title: Testing
-  #   path: tests
-  #   icon: mdi:cog
-  #   cards:
-  #   - type: grid
-  #     columns: 2
-  #     square: true
-  #     cards:
