@@ -165,8 +165,8 @@ class AirPurifierCard extends LitElement {
       :host {
         --pc-background: var(--ha-card-background, var(--card-background-color, white));
         --pc-text-color: var(--primary-text-color);
-        --pc-icon-color: var(--secondary-text-color);
-        --pc-active-icon-color: rgb(255,192,0);
+        --pc-icon-color: var(--state-icon-color);
+        --pc-active-icon-color: var(--state-icon-active-color);
         --pc-spacing: 10px;
       }
       
@@ -185,7 +185,6 @@ class AirPurifierCard extends LitElement {
 
       ha-icon-button {
         --mdc-icon-button-size: 24px;
-        opacity: 0.6;
       }
 
       .header {

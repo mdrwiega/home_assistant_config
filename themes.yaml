@@ -1,0 +1,35 @@
+themes:
+  custom_dark: 
+    # Main
+    card-background-color: "#1c1c1c"
+    primary-background-color: "#111111"
+    secondary-background-color: "#202020"
+
+    primary-text-color: "#e1e1e1"
+    secondary-text-color: "#9b9b9b"
+    text-primary-color: "#e1e1e1"
+
+    divider-color: "rgba(225, 225, 225, .12)"
+
+    # Header
+    app-header-text-color: "#e1e1e1"
+    app-header-background-color: "#101e24"
+
+    # Switches
+    switch-checked-button-color: "#607d8b"
+    switch-checked-track-color: "#90a4ae"
+    switch-unchecked-button-color: "#999999"
+    switch-unchecked-track-color: "#9b9b9b"
+
+    # States and Badges
+    state-icon-color: "#5f6264"
+    state-icon-active-color: "#ffc000"
+
+    # Sidebar
+    sidebar-icon-color: var(--secondary-text-color)
+
+    # Sliders
+    # paper-slider-knob-color: "#"
+
+    # Cards
+    ha-card-border-radius: "5px"

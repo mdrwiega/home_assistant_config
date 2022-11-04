@@ -13,6 +13,8 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/Warsaw
 
+frontend: !include themes.yaml
+
 # https://www.home-assistant.io/dashboards/dashboards/
 lovelace:
   mode: yaml
@@ -31,8 +33,6 @@ automation: !include_dir_merge_list automations
 discovery:
   ignore:
   - yeelight
-
-# fan: !include components/fan.yaml
 
 # Script for vacuum cleaner
 input_select: !include components/input_select.yaml
