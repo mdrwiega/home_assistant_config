@@ -1,20 +1,20 @@
 # Home Assistant Configuration
 
-This is a first version of my smart home system based on the [Home Assistant](https://www.home-assistant.io/).
+This is the first version of my smart home system based on the [Home Assistant](https://www.home-assistant.io/).
 
 ## Dashboard views
 
 ### Main dashboard
 
-![overview](img/lovelace_view_overview.png)
+![overview](img/main_view.webp)
 
 ### Server and network
 
-![server](img/lovelace_view_server.png)
+![server](img/server_view.webp)
 
 ### Devices configuration/maintenance
 
-![configuration](img/lovelace_view_configuration.png)
+![configuration](img/configuration_view.webp)
 
 ## Software
 
@@ -27,7 +27,7 @@ This is a first version of my smart home system based on the [Home Assistant](ht
 | Met.no | [Weather Forecast Card](https://www.home-assistant.io/dashboards/weather-forecast/) | Forecast (Meteorologisk institutt) |
 | SpeedTest.com | [speedtestdotnet](https://www.home-assistant.io/integrations/speedtestdotnet/) | Monitoring of the internet speed |
 
-### Custom cards - lovelace dashboard
+### Custom cards - Lovelace dashboard
 
 - [Xiaomi Vacuum Card](https://github.com/benct/lovelace-xiaomi-vacuum-card)
 - [Battery Entity](https://github.com/cbulock/lovelace-battery-entity)

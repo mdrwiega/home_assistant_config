@@ -80,13 +80,17 @@
         # Vacuum cleaner
         - type: entities
           entities:
-            - type: "custom:xiaomi-vacuum-card"
+            - type: custom:xiaomi-vacuum-card
               entity: vacuum.roborock_vacuum_s5
-              name: 'Vacuum Cleaner'
+              name: Vacuum Cleaner
               vendor: xiaomi
               attributes: false
+              # state:
+              #   battery: false
+              buttons:
+                stop: false
             - entity: input_select.vacuum_room
-
+      # Air conditioner
       - type: thermostat
         entity: climate.1e57f34a
         name: Air conditioner
