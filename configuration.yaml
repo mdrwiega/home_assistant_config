@@ -17,7 +17,7 @@ homeassistant:
 lovelace:
   mode: yaml
   resources:
-    - url: /local/xiaomi_vacuum/xiaomi-vacuum-card.js
+    - url: /local/xiaomi-vacuum-card.js
       type: module
     - url: /local/battery-entity.js
       type: module
