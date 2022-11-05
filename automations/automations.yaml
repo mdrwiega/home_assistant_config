@@ -1,3 +1,24 @@
+# Humidifier turn off
+- id: stop_humidifier_for_low_water_level
+  alias: "Stop humidifier when the water level is low"
+  trigger:
+    - platform: time_pattern
+      minutes: /2
+  condition:
+    - condition: state
+      entity_id: humidifier.zhimi_humidifier_cb1
+      state: "on"
+    - condition: numeric_state
+      entity_id: sensor.zhimi_humidifier_cb1_water_level
+      below: 10
+  action:
+    - service: humidifier.turn_off
+      entity_id: humidifier.zhimi_humidifier_cb1
+    - service: notify.notify_smtp
+      data:
+        title: "[Home] Uzupełnij wodę w nawilżaczu"
+        message: "Nawilżacz został wyłączony ponieważ w zbiorniku pozostało {{ states('sensor.zhimi_humidifier_cb1_water_level') }}% wody."
+
 # - alias: Start Cleaning Room
 #   trigger:
 #     - platform: state
@@ -11,18 +32,3 @@
 #       entity_id: input_select.vacuum_room
 #       data_template:
 #         option: "Select Input"
-
-# # Turn off humidifier if water level below 10%
-# - id: humidification_stop
-#   alias: "Humidification Stop"
-#   trigger:
-#     - platform: numeric_state
-#       entity_id: sensor.mi_humidifier_w
-#       below: 10
-#   action:
-#     - service: fan.turn_off
-#       entity_id: fan.Humidifier
-#     - service: notify.notifier_mail_all
-#       data:
-#         title: "Uzupełnij wodę w nawilżaczu"
-#         message: "Nawilżacz został wyłączony ponieważ w zbiorniku pozostało {{ states('sensor.mi_humidifier_w') }}% wody."
