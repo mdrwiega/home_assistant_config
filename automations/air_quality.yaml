@@ -1,6 +1,7 @@
 # Air purifier 4 (living room) - Auto mode
-- alias: Set air purifier 4 favorite level based on PM2.5 value
-  description: 'If air purifier is on and set to favorite mode then set level based on PM2.5'
+- id: air_purifier_living_room_auto_mode
+  alias: Set air purifier 4 favorite level based on PM2.5 value
+  description: 'If the air purifier is on and set to favorite mode then set level based on PM2.5'
   trigger:
   - platform: time_pattern
     minutes: /1
@@ -10,8 +11,8 @@
     state: 'on'
   - condition: state
     entity_id: fan.zhimi_airp_mb5
-    state: Favorite
     attribute: preset_mode
+    state: Favorite
   action:
   - service: fan.set_preset_mode
     target:
@@ -36,8 +37,9 @@
         {% endif %}
 
 # Air purifier 2S (bedroom) - Auto mode
-- alias: Set air purifier 2S favorite level based on PM2.5 value
-  description: 'If air purifier is on and set to favorite mode then set level based on PM2.5'
+- id: air_purifier_bedroom_room_auto_mode
+  alias: Set air purifier 2S favorite level based on PM2.5 value
+  description: 'If the air purifier is on and set to favorite mode then set level based on PM2.5'
   trigger:
   - platform: time_pattern
     minutes: /1
@@ -47,8 +49,8 @@
     state: 'on'
   - condition: state
     entity_id: fan.zhimi_airpurifier_mc1
-    state: Favorite
     attribute: preset_mode
+    state: Favorite
   action:
   - service: fan.set_preset_mode
     target:
@@ -72,31 +74,45 @@
         {% else %}                                                         1
         {% endif %}
 
-# Notify about bad air quality
-- alias: air_quality_notify
+# Notify about the low air quality
+- id: low_air_quality_notify
+  alias: low_air_quality_notify
   trigger:
   - platform: time_pattern
-    minutes: 10 
+    minutes: /10
   condition:
-    - condition: numeric_state
-      entity_id: sensor.zhimi_airp_mb5_pm2_5
-      above: 20
-  #   - after: '8:00:00'
-  #     before: '23:00:00'
-  #     condition: time
-    # - condition: template
-    #   value_template: "{{ (as_timestamp(now()) - as_timestamp(states.automation.air_quality_notify.attributes.last_triggered | default(0)) | int > 40)}}"
+    and:
+      - condition: time
+        after: '8:00:00'
+        before: '00:00:00'
+      # notify once per 1h
+      - condition: template
+        value_template: "{{ (as_timestamp(now()) - as_timestamp(states.automation.low_air_quality_notify.attributes.last_triggered | default(0)) | int > 3600 )}}"
+      - or:
+        # Living room air purifier
+        - condition: numeric_state
+          entity_id: sensor.zhimi_airp_mb5_pm2_5
+          above: 15
+        # Bedroom air purifier
+        - condition: numeric_state
+          entity_id: sensor.zhimi_airpurifier_mc1_pm2_5
+          above: 15
+        # Outside
+        - condition: numeric_state
+          entity_id: sensor.airly_pm25
+          above: 50
   action:
   - service: notify.notify_smtp
     data:
-      title: "[HA] Zła jakość powietrza!"
+      title: "[Home] Zła jakość powietrza!"
       message:
-        "Bieżące odczyty:\n
-          - Na zewnątrz PM2.5 = {{ states('sensor.airly_pm25') }} µg/m³ \n
-          - Air Purifier 2S PM2.5 = {{ states('sensor.zhimi_airpurifier_mc1_pm2_5') }} µg/m³ \n
-          - Air Purifier 4 PM2.5 = {{ states('sensor.zhimi_airp_mb5_pm2_5') }} µg/m³ \n\n
+        "Bieżące odczyty PM2.5:\n
+          - Na zewnątrz (Airly) : {{ states('sensor.airly_pm25') }} µg/m³ \n
+          - Air Purifier 2S     : {{ states('sensor.zhimi_airpurifier_mc1_pm2_5') }} µg/m³ \n
+          - Air Purifier 4      : {{ states('sensor.zhimi_airp_mb5_pm2_5') }} µg/m³ \n\n
         Włącz oczyszczacz powietrza!"
-
+  # - service: light.toggle
+  #   entity_id: light.living_room_ceiling_lamp_nightlight
 
 # - alias: Turn on purifier if air is bad
 #   trigger:
@@ -106,39 +122,22 @@
 #       minutes: 2
 #     platform: numeric_state
 #     value_template: '{{ state.attributes.aqi }}'
-  # condition:
-  #   conditions:
-  #   - after: '1:00:00'
-  #     before: '23:00:00'
-  #     condition: time
-  # action:
-  # - data:
-  #     message: "AQI {{ state_attr('fan.air_purifier', 'aqi') }}, turning on the Purifier!"
-  #     title: "[HA] Jakość powietrza bardzo zła!"
-  #   service: notify.notifier_mail_all
-  # - entity_id: fan.air_purifier
-  #   service: fan.turn_on
-  # - entity_id: fan.air_purifier
-  #   service: fan.set_speed
-  #   data:
-  #     speed: favorite
-  # - service: xiaomi_miio.fan_set_favorite_level       
-  #   data_template:
-  #     entity_id: fan.air_purifier
-  #     level: >
-  #       {% if state_attr('fan.air_purifier', 'aqi') | int > 80 %}
-  #       14
-  #       {% elif state_attr('fan.air_purifier', 'aqi') | int > 50 %}
-  #       10
-  #       {% elif state_attr('fan.air_purifier', 'aqi') | int > 30 %}
-  #       5
-  #       {% elif state_attr('fan.air_purifier', 'aqi') | int > 20 %}
-  #       4
-  #       {% elif state_attr('fan.air_purifier', 'aqi') | int > 15 %}
-  #       3
-  #       {% else %}
-  #       2
-  #       {% endif %}
+# condition:
+#   conditions:
+#   - after: '1:00:00'
+#     before: '23:00:00'
+#     condition: time
+# action:
+# - data:
+#     message: "AQI {{ state_attr('fan.air_purifier', 'aqi') }}, turning on the Purifier!"
+#     title: "[HA] Jakość powietrza bardzo zła!"
+#   service: notify.notifier_mail_all
+# - entity_id: fan.air_purifier
+#   service: fan.turn_on
+# - entity_id: fan.air_purifier
+#   service: fan.set_speed
+#   data:
+#     speed: favorite
 
 # - alias: Turn off purifier if air good
 #   trigger:
