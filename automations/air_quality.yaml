@@ -78,8 +78,8 @@
 - id: low_air_quality_notify
   alias: low_air_quality_notify
   trigger:
-  - platform: time_pattern
-    minutes: /10
+    - platform: time_pattern
+      minutes: /5
   condition:
     and:
       - condition: time
@@ -87,7 +87,7 @@
         before: '00:00:00'
       # notify once per 1h
       - condition: template
-        value_template: "{{ (as_timestamp(now()) - as_timestamp(states.automation.low_air_quality_notify.attributes.last_triggered | default(0)) | int > 3600 )}}"
+        value_template: "{{ (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered) | default(0)) | int(0) > 3600 }}"
       - or:
         # Living room air purifier
         - condition: numeric_state
@@ -111,8 +111,46 @@
           - Air Purifier 2S     : {{ states('sensor.zhimi_airpurifier_mc1_pm2_5') }} µg/m³ \n
           - Air Purifier 4      : {{ states('sensor.zhimi_airp_mb5_pm2_5') }} µg/m³ \n\n
         Włącz oczyszczacz powietrza!"
-  # - service: light.toggle
-  #   entity_id: light.living_room_ceiling_lamp_nightlight
+
+# Turn off air purifier 4 (living room) if air quality is good enough
+- id: turn_off_air_purifier_4_if_air_is_good
+  alias: turn_off_air_purifier_4_if_air_is_good
+  trigger:
+    - platform: time_pattern
+      minutes: /15
+  condition:
+    - condition: state
+      entity_id: fan.zhimi_airp_mb5
+      state: "on"
+    - condition: numeric_state
+      entity_id: sensor.zhimi_airp_mb5_pm2_5
+      below: 5
+    - condition: numeric_state
+      entity_id: sensor.airly_pm25
+      below: 10
+  action:
+    - service: fan.turn_off
+      entity_id: fan.zhimi_airp_mb5
+
+# Turn off air purifier 2S (bedroom) if air quality is good enough
+- id: turn_off_air_purifier_2s_if_air_is_good
+  alias: turn_off_air_purifier_2s_if_air_is_good
+  trigger:
+    - platform: time_pattern
+      minutes: /15
+  condition:
+    - condition: state
+      entity_id: fan.zhimi_airpurifier_mc1
+      state: "on"
+    - condition: numeric_state
+      entity_id: sensor.zhimi_airpurifier_mc1_pm2_5
+      below: 5
+    - condition: numeric_state
+      entity_id: sensor.airly_pm25
+      below: 10
+  action:
+    - service: fan.turn_off
+      entity_id: fan.zhimi_airpurifier_mc1
 
 # - alias: Turn on purifier if air is bad
 #   trigger:
@@ -138,15 +176,3 @@
 #   service: fan.set_speed
 #   data:
 #     speed: favorite
-
-# - alias: Turn off purifier if air good
-#   trigger:
-#   - below: '15'
-#     entity_id: fan.air_purifier
-#     for:
-#       minutes: 1
-#     platform: numeric_state
-#     value_template: '{{ state.attributes.aqi }}'
-#   action:
-#   - entity_id: fan.air_purifier
-#     service: fan.turn_off
