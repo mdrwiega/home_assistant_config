@@ -19,6 +19,11 @@
       icon_template: mdi:jquery
       unit_of_measurement: "µg/m³"
       value_template: "{{ states.sensor.airly.state.split(' ')[1] }}"
+    airly_pm25_norm:
+      friendly_name: "PM2.5 norm"
+      icon_template: mdi:jquery
+      unit_of_measurement: "%"
+      value_template: "{{ (states.sensor.airly.state.split(' ')[1] | float * 100 / 15.0) | round(0) }}"
     airly_pm10:
       friendly_name: "PM10"
       icon_template: mdi:jquery

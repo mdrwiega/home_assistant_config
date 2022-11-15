@@ -168,11 +168,9 @@
         - graph: line
           type: sensor
           entity: sensor.airly_pm25
-          name: PM2.5
         - graph: line
           type: sensor
-          entity: sensor.airly_aqi
-          name: CAQI
+          entity: sensor.airly_pm25_norm
     # Forecast
     - type: weather-forecast
       entity: weather.forecast_dom
