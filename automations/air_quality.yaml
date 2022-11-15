@@ -4,7 +4,7 @@
   description: 'If the air purifier is on and set to favorite mode then set level based on PM2.5'
   trigger:
   - platform: time_pattern
-    minutes: /1
+    seconds: /30
   condition:
   - condition: state
     entity_id: fan.zhimi_airp_mb5
@@ -23,17 +23,18 @@
     entity_id: number.zhimi_airp_mb5_favorite_level
     data_template:
       value: >
-        {% if states('sensor.zhimi_airp_mb5_pm2_5') | int > 100 %}  14
-        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 70 %} 12
-        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 50 %} 10
-        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 40 %} 8
-        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 30 %} 6
-        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 20 %} 5
-        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 10 %} 4
+        {% if states('sensor.zhimi_airp_mb5_pm2_5') | int > 15 %} 11
+        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 14 %} 10
+        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 12 %} 9
+        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 10 %} 8
+        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 9  %} 7
+        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 8  %} 6
+        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 7  %} 5
+        {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 6  %} 4
         {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 5  %} 3
         {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 4  %} 2
         {% elif states('sensor.zhimi_airp_mb5_pm2_5') | int > 3  %} 1
-        {% else %}                                                  1
+        {% else %}                                                  0
         {% endif %}
 
 # Air purifier 2S (bedroom) - Auto mode
@@ -42,7 +43,7 @@
   description: 'If the air purifier is on and set to favorite mode then set level based on PM2.5'
   trigger:
   - platform: time_pattern
-    minutes: /1
+    seconds: /30
   condition:
   - condition: state
     entity_id: fan.zhimi_airpurifier_mc1
@@ -61,17 +62,18 @@
     entity_id: number.zhimi_airpurifier_mc1_favorite_level
     data_template:
       value: >
-        {% if states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 100 %}  14
-        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 70 %} 12
-        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 50 %} 10
-        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 40 %} 8
-        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 30 %} 6
-        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 20 %} 5
-        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 10 %} 4
+        {% if states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 15 %} 14
+        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 14 %} 11
+        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 12 %} 9
+        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 10 %} 8
+        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 9  %} 7
+        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 8  %} 6
+        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 7  %} 5
+        {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 6  %} 4
         {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 5  %} 3
         {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 4  %} 2
         {% elif states('sensor.zhimi_airpurifier_mc1_pm2_5') | int > 3  %} 1
-        {% else %}                                                         1
+        {% else %}                                                         0
         {% endif %}
 
 # Notify about the low air quality
